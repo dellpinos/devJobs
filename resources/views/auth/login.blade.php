@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}" novalidate>
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->
@@ -43,10 +43,10 @@
                 Olvidaste tu Password
             </x-link>
 
-
         </div>
+
         <x-primary-button class="w-full justify-center">
-            {{ __('Log in') }}
+            {{ __('Iniciar Sesión') }}
         </x-primary-button>
     </form>
 </x-guest-layout>
