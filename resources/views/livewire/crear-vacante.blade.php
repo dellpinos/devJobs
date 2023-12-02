@@ -71,5 +71,4 @@
         Crear Vacante
     </x-primary-button>
 
-
 </form>
