@@ -19,4 +19,9 @@ class Vacante extends Model
         'imagen',
         'user_id'
     ];
+
+    public function getUltimoDiaAttribute($value)
+    {
+        return $this->asDateTime($value);
+    }
 }
