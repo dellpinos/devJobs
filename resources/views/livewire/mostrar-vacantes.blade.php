@@ -16,12 +16,20 @@
                 <a href="#" class=" bg-red-600 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase text-center dark:bg-red-800">Eliminar</a>
             </div>
         </div>
+
+
     @empty
-        <p class="p-3 text-center text-sm text-gray-600 dark:text-gray-400">No hay vacantes, deberias crear algunas.</p>
+        <p class="p-3 text-center flex flex-col justify-between h-full items-center text-sm text-gray-600 dark:text-gray-400">No hay vacantes, deberias crear algunas.</p>
     @endforelse
 
-    <div class=" mt-10">
+    @if (count($vacantes) > 0)
+
+    <div class=" my-6 mx-5">
         {{ $vacantes->links() }}
     </div>
+
+    @endif
+
+
 </div>
 
