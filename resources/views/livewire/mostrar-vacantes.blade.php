@@ -4,7 +4,7 @@
         <div
             class="p-6 text-gray-900 dark:text-gray-100 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-600">
             <div class="space-y-3 ">
-                <a href="#" class="text-xl font-bold ">
+                <a href="{{ route('vacantes.show', $vacante) }}" class="text-xl font-bold ">
                     {{ $vacante->titulo }}
                 </a>
                 <p class=" text-sm text-gray-600 font-bold dark:text-gray-500">{{ $vacante->empresa }}</p>
