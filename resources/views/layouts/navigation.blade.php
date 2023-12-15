@@ -11,18 +11,19 @@
                 </div>
 
                 @auth
-
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
-                            {{ __('Mis Vacantes') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
-                            {{ __('Crear Vacante') }}
-                        </x-nav-link>
-                    </div>
+                    @can('create', App\Models\Vacante::class)
+                        <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
+                                {{ __('Mis Vacantes') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
+                                {{ __('Crear Vacante') }}
+                            </x-nav-link>
+                        </div>
+                    @endcan
 
                 @endauth
             </div>
@@ -30,12 +31,12 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @auth
-                    @if (auth()->user()->rol === 2)
+                    @can('create', App\Models\Vacante::class)
                         <a href="{{ route('notificaciones') }}"
                             class=" mr-2 w-7 h-7 dark:bg-red-700 bg-red-500 dark:hover:bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center font-extrabold text-sm text-white ">
                             {{ Auth::user()->unreadNotifications->count() }}
                         </a>
-                    @endif
+                    @endcan
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
