@@ -12,28 +12,32 @@
                     
                     <h2 class="text-2xl font-bold text-center sm:my-10">Nuevas Notificaciones</h2>
 
+                    <div class="divide-y divide-gray-200 dark:divide-gray-600">
+
                     @forelse ( $notificaciones as $notificacion)
-                        <div class=" p-5 border border-gray-200 dark:border-gray-700 lg:flex lg:justify-between lg:items-center mb-2">
+                        <div class=" p-5 lg:flex lg:justify-between lg:items-center">
                             <div>
                                 <p>Tienes un nuevo candidato en: <span class=" font-bold">{{$notificacion->data['nombre_vacante']}}</span></p>
                                 <p><span class=" font-bold">{{$notificacion->created_at->diffForHumans()}}</span></p>
                             </div>
                             <div class=" mt-5 lg:mt-0 flex justify-center">
-                                <a href="#" class=" bg-blue-800 hover:bg-blue-700 p-3 text-sm uppercase font-bold text-white rounded-lg ">Ver Candidatos</a>
+                                <a href="{{ route('candidatos.index', $notificacion->data['id_vacante']) }}" class=" bg-blue-800 hover:bg-blue-700 p-3 text-sm uppercase font-bold text-white rounded-lg ">Ver Candidatos</a>
                             </div>
                         </div>
 
                     @empty
                         <p class=" text-center text-gray-600">No hay nuevas notificaciones.</p>
                     @endforelse
+                </div>
 
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
                     <h2 class="text-2xl font-bold text-center sm:my-10">Historial de Notificaciones</h2>
 
+                    <div class="divide-y divide-gray-200 dark:divide-gray-600">
                     @forelse ( $antiguas_notificaciones as $antigua_notificacion)
-                        <div class="text-gray-300 dark:text-gray-600 p-5 border border-gray-200 dark:border-gray-700 lg:flex lg:justify-between lg:items-center mb-2">
+                        <div class="text-gray-300 dark:text-gray-600 p-5 lg:flex lg:justify-between lg:items-center">
                             <div>
                                 <p>Tienes un nuevo candidato en: <span class=" font-bold">{{$antigua_notificacion->data['nombre_vacante']}}</span></p>
                                 <p><span class=" font-bold">{{$antigua_notificacion->created_at->diffForHumans()}}</span></p>
@@ -43,6 +47,7 @@
                     @empty
                         <p class=" text-center text-gray-600">No hay notificaciones.</p>
                     @endforelse
+                    </div>
 
                 </div>
             </div>
